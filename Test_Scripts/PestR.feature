@@ -8,6 +8,6 @@ Scenario Outline: Validate customer creation
 	
 	
 	Examples:
-	|first name|last name|address       |zipcode| 
-	|Nilaydkbk | shah123   |45 carlos St  | 75071 | 
+	|first name|last name     |address       |zipcode| 
+	|Mary      | Charlander   |45 carlos St  | 75071 | 
 	
