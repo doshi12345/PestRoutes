@@ -3,7 +3,7 @@ package com.ww.common;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -55,19 +55,19 @@ public class Common {
 	
 	
 	
-	public static void SS (WebDriver driver, String FileName) throws Throwable {
-		
-		TakesScreenshot ss = (TakesScreenshot) driver;
-		File f1= ss.getScreenshotAs(OutputType.FILE); // to take screenshot 
-		FileUtils.copyFile(f1,new File("./Screenshot/"+FileName+".jpg"));//to save the file 
-		if (ss.getScreenshotAs(OutputType.FILE) != null) {
-			System.out.println("ScreenShot Taken");
-			
-		}
-		else {
-			System.out.println("ScreenShot Couldn't Take");
-		}
-	
-   }
+//	public static void SS (WebDriver driver, String FileName) throws Throwable {
+//		
+//		TakesScreenshot ss = (TakesScreenshot) driver;
+//		File f1= ss.getScreenshotAs(OutputType.FILE); // to take screenshot 
+//		FileUtils.copyFile(f1,new File("./Screenshot/"+FileName+".jpg"));//to save the file 
+//		if (ss.getScreenshotAs(OutputType.FILE) != null) {
+//			System.out.println("ScreenShot Taken");
+//			
+//		}
+//		else {
+//			System.out.println("ScreenShot Couldn't Take");
+//		}
+//	
+//   }
 	
 }

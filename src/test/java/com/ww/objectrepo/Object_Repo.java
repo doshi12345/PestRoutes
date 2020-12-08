@@ -1,11 +1,11 @@
 package com.ww.objectrepo;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 
 
 public class Object_Repo {
@@ -18,7 +18,7 @@ public class Object_Repo {
 	}
 
 	
-//LoginPage
+//LoginPage Webelements
 	@FindBy (id= "inputUser")
 	private WebElement username1;
 	public WebElement getusername() {
@@ -40,7 +40,7 @@ public class Object_Repo {
 	
 	
 	
-//HomePage
+//HomePage Webelements
 	@FindBy (xpath= "//a[contains(text(), 'New Customer')]")
 	private WebElement newcustomer;
 	public WebElement getnewcustomer() {
@@ -82,22 +82,33 @@ public class Object_Repo {
 	
 	
 	
-//Overview window
+//Overview window Webelements
 	
 	@FindBy (xpath= "//span[@id='ui-id-11']")
 	private WebElement nameOverview;
-	public WebElement nameOverview() {
+	public WebElement getnameOverview() {
 		return nameOverview;
 	}
 	
 	@FindBy (xpath= "//h3[contains(text(), 'Account Overview')]//div")
 	private WebElement addressOverview;
-	public WebElement addressOverview() {
+	public WebElement getaddressOverview() {
 		return addressOverview;
 	}
 	
 	
 	
+	@FindBy (xpath= "//button[@id='globalCustomerSaveButton']//span[contains(text(), 'Save')")
+	private WebElement savebtn;
+	public WebElement getsavebtn() {
+		return savebtn;
+	}
+	
+	@FindBy (xpath= "//div[contains(text(), 'Save Anyways')]")
+	private WebElement saveanywaysbtn;
+	public WebElement getsaveanyways() {
+		return saveanywaysbtn;
+	}
 
 	
 	
@@ -111,38 +122,34 @@ public class Object_Repo {
 	}
 	
 	
+	
+	//Alert handling methods if there is Duplicate customer entry
 	public boolean isAlertPresent() {
 		
 		try 
 		{ 
 		    driver.switchTo().alert(); 
-		    System.out.println(" Alert Present");
+		    System.out.println(" Alert window Present; Duplicate account found");
 		    return true;
 		}  
 		catch (org.openqa.selenium.NoAlertPresentException e) 
 		{ 
-		    System.out.println("No Alert Present");
+		    System.out.println("No Alert window Present: No Duplicate account found");
 		      
 		}
 		return false;
-		
-		  
-		
+			
 	}
+	
+	
 	public void handleAlert(){
 	    if(isAlertPresent()){
 	        Alert alert = driver.switchTo().alert();
 	        System.out.println(alert.getText());
 	        alert.accept();
+	        driver.findElement(By.xpath("//div[contains(text(), 'Save Anyways')]")).click();
 	    }
 	}
-	
-	
-	
-	
-	
-	
-
 	
 	
 }

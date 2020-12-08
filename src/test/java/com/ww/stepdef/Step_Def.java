@@ -1,16 +1,19 @@
 package com.ww.stepdef;
 
-import org.openqa.selenium.By;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+
 
 import com.ww.common.Common;
 import com.ww.objectrepo.Object_Repo;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+
+
 
 
 
@@ -36,7 +39,7 @@ public class Step_Def {
 	
 	
 
-	@When("I create customer with {string}, {string}, {string} and {string}")
+	@When("^I create customer with \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\"$")
 	public void i_create_customer_with_and(String firstname, String lastname, String address, String zipcode) throws InterruptedException {
 		
 		
@@ -54,47 +57,36 @@ public class Step_Def {
 		ob.getaddressbox().sendKeys(address);
 		ob.getsavebutton().click();
 		
-		Thread.sleep(2000);
-		   
+		Thread.sleep(2000);	   
 	}
 	
 	
-	
 
-
-	@Then("I validate if {string} , {string} and {string} match in overview tab")
+	@Then("^I validate if \"([^\"]*)\" , \"([^\"]*)\" and \"([^\"]*)\" match in overview tab$")
 	public void i_validate_if_and_in_overview_tab(String firstname, String lastname ,String address) throws InterruptedException {
 		
 		
 		
 		ob.handleAlert();
-		driver.findElement(By.xpath("//div[contains(text(), 'Save Anyways')]")).click();
+		//driver.findElement(By.xpath("//div[contains(text(), 'Save Anyways')]")).click();
 		
 		
 		Thread.sleep(2000);
 		String customername = firstname + " " + lastname;
-		System.out.println("Customer name is: " + customername);
-		System.out.println("Customer Address is: " + address);
 		
-		System.out.println("Name and address visible in Account Overview are: " + ob.nameOverview().getText() + " " + ob.addressOverview().getText());
+		//Name and address of customer
+		System.out.println("Customer name is: " + customername + " and "  +"Customer Address is: " + address);
 		
-		Assert.assertTrue(ob.nameOverview().getText().contains(customername));
-		Assert.assertTrue(ob.addressOverview().getText().contains(address));
+		//Name and address of customer seen/visible in the Account Overview window
+		System.out.println("Name visible in Account Overview window: " + ob.getnameOverview().getText() + " &&&& Address visible in Account Overview window: " + ob.getaddressOverview().getText());
 		
-		    
+		Assert.assertTrue(ob.getnameOverview().getText().contains(customername));
+		Assert.assertTrue(ob.getaddressOverview().getText().contains(address));
+		
+		
+		
+		
+		Thread.sleep(10000);
+		driver.quit();
+	}    	
 	}
-	
-	
-	
-	
-	
-	
-//	@Then("^User cloes the browser$")
-//	public void user_cloes_the_browser() throws Throwable {
-//	    
-//	    driver.quit();
-//		
-//	}
-
-
-}

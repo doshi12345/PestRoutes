@@ -9,5 +9,5 @@ Scenario Outline: Validate customer creation
 	
 	Examples:
 	|first name|last name|address       |zipcode| 
-	|Priyankan   | Joshi   |1800 carlos St| 75070 | 
+	|Nilaydkbk | shah123   |45 carlos St  | 75071 | 
 	
