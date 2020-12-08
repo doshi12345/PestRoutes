@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="24.081">
+<testcase classname="Customer creation" name="Validate customer creation" time="23.929">
+<system-out><![CDATA[Given I sign in to pestroutes domain........................................passed
+When I create customer with "Priyankan", "Joshi", "1800 carlos St" and "75070".passed
+Then I validate if "Priyankan" , "Joshi" and "1800 carlos St" match in overview tab.passed
+]]></system-out>
+</testcase>
+</testsuite>
