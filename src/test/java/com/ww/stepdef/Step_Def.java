@@ -44,11 +44,14 @@ public class Step_Def {
 		Assert.assertEquals(ob.verifyHometitle(), "Route Calendar");
 		ob.getnewcustomer().click();
 		
+		
+		
 		Thread.sleep(2000);
 		ob.getfirstnamebox().sendKeys(firstname);
 		ob.getlastnamebox().sendKeys(lastname);
-		ob.getaddressbox().sendKeys(address);
 		ob.getzipbox().sendKeys(zipcode);
+		Thread.sleep(1000);
+		ob.getaddressbox().sendKeys(address);
 		ob.getsavebutton().click();
 		
 		Thread.sleep(2000);
@@ -68,8 +71,13 @@ public class Step_Def {
 		driver.findElement(By.xpath("//div[contains(text(), 'Save Anyways')]")).click();
 		
 		
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		String customername = firstname + " " + lastname;
+		System.out.println("Customer name is: " + customername);
+		System.out.println("Customer Address is: " + address);
+		
+		System.out.println("Name and address visible in Account Overview are: " + ob.nameOverview().getText() + " " + ob.addressOverview().getText());
+		
 		Assert.assertTrue(ob.nameOverview().getText().contains(customername));
 		Assert.assertTrue(ob.addressOverview().getText().contains(address));
 		
